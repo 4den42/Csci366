@@ -30,6 +30,9 @@ void lmsm_i_ret(lmsm *our_little_machine) {
 }
 
 void lmsm_i_push(lmsm *our_little_machine) {
+    // we want to push the value of the accumulator onto the value stack (starting at pos 199)
+    our_little_machine->stack_pointer--;
+    our_little_machine->memory[our_little_machine->stack_pointer] = our_little_machine->accumulator;
 }
 
 void lmsm_i_pop(lmsm *our_little_machine) {
@@ -74,6 +77,7 @@ void lmsm_i_load(lmsm *our_little_machine, int location) {
 }
 
 void lmsm_i_add(lmsm *our_little_machine, int location) {
+    our_little_machine->accumulator += our_little_machine->memory[location];
 }
 
 void lmsm_i_sub(lmsm *our_little_machine, int location) {
@@ -123,6 +127,8 @@ void lmsm_exec_instruction(lmsm *our_little_machine, int instruction) {
         lmsm_i_halt(our_little_machine);
     } else if (100 <= instruction && instruction <= 199) {
         lmsm_i_add(our_little_machine, instruction - 100);
+    } else if (instruction == 920) {
+        lmsm_i_push(our_little_machine);
     } else {
         our_little_machine->error_code = ERROR_UNKNOWN_INSTRUCTION;
         our_little_machine->status = STATUS_HALTED;
