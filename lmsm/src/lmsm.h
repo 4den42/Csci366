@@ -18,8 +18,8 @@ typedef enum error_code {
     ERROR_UNKNOWN_INSTRUCTION,
 } error_code;
 
-static const int TOP_OF_MEMORY = 199;
-static const int OUTPUT_BUFFER_SIZE = 4000;
+#define TOP_OF_MEMORY 199
+#define OUTPUT_BUFFER_SIZE 4000
 
 //===================================================================
 //  Represents the core computational infrastructure of the
