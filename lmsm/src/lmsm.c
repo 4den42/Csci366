@@ -39,6 +39,9 @@ void lmsm_i_pop(lmsm *our_little_machine) {
 }
 
 void lmsm_i_dup(lmsm *our_little_machine) {
+    our_little_machine->stack_pointer--;
+    our_little_machine->memory[our_little_machine->stack_pointer] =
+            our_little_machine->memory[our_little_machine->stack_pointer + 1];
 }
 
 void lmsm_i_drop(lmsm *our_little_machine) {
@@ -48,6 +51,11 @@ void lmsm_i_swap(lmsm *our_little_machine) {
 }
 
 void lmsm_i_sadd(lmsm *our_little_machine) {
+    int value1 = our_little_machine->memory[our_little_machine->stack_pointer];
+    int value2 = our_little_machine->memory[our_little_machine->stack_pointer + 1];
+    int result = value1 + value2;
+    our_little_machine->stack_pointer++;
+    our_little_machine->memory[our_little_machine->stack_pointer] = result;
 }
 
 void lmsm_i_ssub(lmsm *our_little_machine) {
@@ -81,6 +89,7 @@ void lmsm_i_add(lmsm *our_little_machine, int location) {
 }
 
 void lmsm_i_sub(lmsm *our_little_machine, int location) {
+    our_little_machine->accumulator -= our_little_machine->memory[location];
 }
 
 void lmsm_i_load_immediate(lmsm *our_little_machine, int value) {
@@ -127,8 +136,16 @@ void lmsm_exec_instruction(lmsm *our_little_machine, int instruction) {
         lmsm_i_halt(our_little_machine);
     } else if (100 <= instruction && instruction <= 199) {
         lmsm_i_add(our_little_machine, instruction - 100);
+    } else if (200 <= instruction && instruction <= 299) {
+        lmsm_i_sub(our_little_machine, instruction - 200);
+    } else if (700 <= instruction && instruction <= 799) {
+        lmsm_i_branch_if_zero(our_little_machine, instruction - 700);
     } else if (instruction == 920) {
         lmsm_i_push(our_little_machine);
+    } else if (instruction == 922) {
+        lmsm_i_dup(our_little_machine);
+    } else if (instruction == 930) {
+        lmsm_i_sadd(our_little_machine);
     } else {
         our_little_machine->error_code = ERROR_UNKNOWN_INSTRUCTION;
         our_little_machine->status = STATUS_HALTED;
