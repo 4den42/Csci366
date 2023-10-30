@@ -1,5 +1,5 @@
 #include "lmsm.h"
-
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,6 +11,7 @@
 //======================================================
 
 void lmsm_cap_value(int * val){
+    *val = fmin(fmax(*val, -999), 999);
    //TODO - implement capping the value pointed to by this pointer between 999 and -999
 }
 

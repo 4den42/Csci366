@@ -52,6 +52,7 @@ asm_instruction * asm_make_instruction(char* type, char *label, char *label_refe
         new_instruction->offset = 0;
     }
     // TODO: set the number of slots for the instruction into the slots field
+    new_instruction->slots = predecessor->slots;
     return new_instruction;
 }
 
@@ -112,7 +113,17 @@ int asm_is_num(char * token){
 
 int asm_find_label(asm_instruction *root, char *label) {
     // TODO - scan the linked list for the given label, return -1 if not found
-    return -1;
+    asm_instruction temp = &root;
+    if(strComp(label, root->label)){
+        break;
+    }else while(temp->next != NULL){
+        temp = temp.next;
+        if(strComp(label, temp.label)){
+            break;
+        }
+    }else{
+        return -1;
+    }
 }
 
 
