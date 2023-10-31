@@ -115,11 +115,11 @@ int asm_find_label(asm_instruction *root, char *label) {
     // TODO - scan the linked list for the given label, return -1 if not found
     asm_instruction temp = &root;
     if(strComp(label, root->label)){
-        break;
+        return temp.value;
     }else while(temp->next != NULL){
         temp = temp.next;
         if(strComp(label, temp.label)){
-            break;
+            return temp.value;
         }
     }else{
         return -1;
@@ -163,13 +163,47 @@ void asm_gen_code_for_instruction(asm_compilation_result  * result, asm_instruct
     // note that if the instruction has a label reference rather than a raw number reference
     // you will need to look it up with `asm_find_label` and, if the label does not exist,
     // report the error as ASM_ERROR_BAD_LABEL
-
-
     int value_for_instruction = instruction->value;
-    if (strcmp("ADD", instruction->instruction) == 0) {
-        result->code[instruction->offset] = 100 + value_for_instruction;
-    } else {
+    if(strcmp("HALT",instruction->instruction) == 0){
         result->code[instruction->offset] = 0;
+    }else if (strcmp("ADD", instruction->instruction) == 0) {
+        result->code[instruction->offset] = 100 + value_for_instruction;
+    } else if(strcmp("SUB",instruction->instruction) == 0){
+        result->code[instruction->offset] = 200 + value_for_instruction;
+    } else if(strcmp("STA",instruction->instruction) == 0){
+        result->code[instruction->offset] = 300 + value_for_instruction;
+    }else if(strcmp("LDI",instruction->instruction) == 0){
+        result->code[instruction->offset] = 400 + value_for_instruction;
+    }else if(strcmp("LDA",instruction->instruction) == 0){
+        result->code[instruction->offset] = 500 + value_for_instruction;
+    }else if(strcmp("BRA",instruction->instruction) == 0){
+        result->code[instruction->offset] = 600 + value_for_instruction;
+    }else if(strcmp("BRZ",instruction->instruction) == 0){
+        result->code[instruction->offset] = 700 + value_for_instruction;
+    }else if(strcmp("BRP",instruction->instruction) == 0){
+        result->code[instruction->offset] = 800 + value_for_instruction;
+    }else if(strcmp("INP",instruction->instruction) == 0){
+        result->code[instruction->offset] = 901;
+    }else if(strcmp("OUT",instruction->instruction) == 0){
+        result->code[instruction->offset] = 902;
+    }else if(strcmp("DAT",instruction->instruction) == 0) {
+    }else if(strcmp("SPUSH",instruction->instruction) == 0){
+        result->code[instruction->offset] = 920;
+    }else if(strcmp("SDUP",instruction->instruction) == 0){
+        result->code[instruction->offset] = 922;
+    }else if(strcmp("SADD",instruction->instruction) == 0){
+        result->code[instruction->offset] = 930;
+    }else if(instruction->label != NULL) {
+        if(asm_find_label(instruction) != -1){
+            int res = asm_find_label(instruction);
+            result->code = res;
+        }else{
+            result->code[instruction->offset] = 0;
+            result->error = ASM_ERROR_BAD_LABEL;
+        }
+    }else{
+        result->code[instruction->offset] = 0;
+
     }
 
 }

@@ -1,9 +1,9 @@
 #include "lmsm.h"
-#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <math.h>
 
 
 //======================================================
@@ -17,7 +17,11 @@ void lmsm_cap_value(int * val){
 
 int lmsm_has_two_values_on_stack(lmsm *our_little_machine) {
     //TODO - return 0 if there are not two values on the stack
-    return 1;
+    int SP = our_little_machine->stack_pointer;
+    if(SP < 199){
+        return 1;
+    }
+    return 0;
 }
 
 //======================================================
@@ -76,10 +80,18 @@ void lmsm_i_sdiv(lmsm *our_little_machine) {
 
 void lmsm_i_out(lmsm *our_little_machine) {
     // TODO, append the current accumulator to the output_buffer in the LMSM
+    int curAcc = *our_little_machine->accumulator;
+    for(int i = 0; i < 400; i++){
+        if(strcmp(our_little_machine->output_buffer[i],""){
+            our_little_machine->output_buffer[i] = (char)curAcc;
+        }
+    }
 }
 
 void lmsm_i_inp(lmsm *our_little_machine) {
     // TODO read a value from the command line and store it as an int in the accumulator
+    int inst = Convert.ToInt32(Console.ReadLine());
+    our_little_machine->accumulator = inst;
 }
 
 void lmsm_i_load(lmsm *our_little_machine, int location) {
@@ -115,6 +127,7 @@ void lmsm_step(lmsm *our_little_machine) {
     // TODO : if the machine is not halted, we need to read the instruction in the memory slot
     //        pointed to by the program counter, bump the program counter then execute
     //        the instruction
+    //Already done?
     if (our_little_machine->status != STATUS_HALTED) {
         int next_instruction = our_little_machine->memory[our_little_machine->program_counter];
         our_little_machine->program_counter++;
@@ -132,6 +145,7 @@ void lmsm_exec_instruction(lmsm *our_little_machine, int instruction) {
 
     // TODO - dispatch the rest of the instruction set and implement
     //        the instructions above
+    // Also already done?
 
     if (instruction == 0) {
         lmsm_i_halt(our_little_machine);
