@@ -9,3 +9,5 @@ add_executable(lmsm src/main.c src/lmsm.c src/lmsm.h src/assembler.c src/assembl
 add_library(lmsm_lib src/main.c src/lmsm.c src/lmsm.h src/assembler.c src/assembler.h src/repl.c src/repl.h src/firth.c src/firth.h)
 
 add_subdirectory(test)
+
+include_directories(SYSTEM ./lib)
