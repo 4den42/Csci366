@@ -145,10 +145,31 @@ void asm_parse_src(asm_compilation_result * result, char * original_src){
     //       generate the following errors as appropriate:
     //
     //       ASM_ERROR_UNKNOWN_INSTRUCTION - when an unknown instruction is encountered
-    //       ASM_ERROR_ARG_REQUIRED        - when an instruction does not have a proper argument passed to it
+    //       ASM_ERrOR_ARG_REQUIRED        - when an instruction does not have a proper argument passed to it
     //       ASM_ERROR_OUT_OF_RANGE        - when a number argument is out of range (-999 to 999)
     //
     //       store the error in result->error
+    char *token = strtok(src, "\n");
+    while (token != NULL){
+        char *instruction = strtok(token, " \t\n");
+        char *argument = strtok(NULL, " \t\n");
+
+        if(instruction !=NULL){
+            current_instruction = malloc(sizeof(asm_instruction));
+            current_instruction->instruction = strdup(instruction);
+
+            if(!asm_is_instruction(*instruction)){
+                printf(%s,ASM_ERROR_UNKNOWN_INSTRUCTION);
+                result->error;
+            }
+            if(argument != NULL){
+                int arg_value = atoi(argument);
+                if(lmsm_cap_value(arg_value)){
+
+                }
+            }
+        }
+    }
 }
 
 //======================================================
@@ -194,11 +215,10 @@ void asm_gen_code_for_instruction(asm_compilation_result  * result, asm_instruct
     }else if(strcmp("SADD",instruction->instruction) == 0){
         result->code[instruction->offset] = 930;
     }else if(instruction->label != NULL) {
-        if(asm_find_label(instruction) != -1){
-            int res = asm_find_label(instruction);
+        if(asm_find_label(instruction,instruction->label) != -1){
+            int res = asm_find_label(instruction,instruction->label);
             result->code = res;
         }else{
-            result->code[instruction->offset] = 0;
             result->error = ASM_ERROR_BAD_LABEL;
         }
     }else{
