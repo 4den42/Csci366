@@ -113,17 +113,17 @@ int asm_is_num(char * token){
 
 int asm_find_label(asm_instruction *root, char *label) {
     // TODO - scan the linked list for the given label, return -1 if not found
-    asm_instruction temp = &root;
-    if(strComp(label, root->label)){
-        return temp.value;
-    }else while(temp->next != NULL){
-        temp = temp.next;
-        if(strComp(label, temp.label)){
-            return temp.value;
+    asm_instruction *temp = &root;
+    if(strcmp(label, root->label)){
+        return temp->value;
+    }else while(temp->next != NULL) {
+            temp = temp->next;
+            if (strcmp(label, temp->label)) {
+                return temp->value;
+            } else {
+                return -1;
+            }
         }
-    }else{
-        return -1;
-    }
 }
 
 
@@ -158,13 +158,13 @@ void asm_parse_src(asm_compilation_result * result, char * original_src){
             current_instruction = malloc(sizeof(asm_instruction));
             current_instruction->instruction = strdup(instruction);
 
-            if(!asm_is_instruction(*instruction)){
-                printf(%s,ASM_ERROR_UNKNOWN_INSTRUCTION);
+            if(!asm_is_instruction(instruction)){
+                printf("%s",ASM_ERROR_UNKNOWN_INSTRUCTION);
                 result->error;
             }
             if(argument != NULL){
                 int arg_value = atoi(argument);
-                if(lmsm_cap_value(arg_value)){
+                if((arg_value)){
 
                 }
             }
@@ -217,7 +217,7 @@ void asm_gen_code_for_instruction(asm_compilation_result  * result, asm_instruct
     }else if(instruction->label != NULL) {
         if(asm_find_label(instruction,instruction->label) != -1){
             int res = asm_find_label(instruction,instruction->label);
-            result->code = res;
+            result->code[instruction->offset] = res;
         }else{
             result->error = ASM_ERROR_BAD_LABEL;
         }
