@@ -8,7 +8,7 @@ Expected equality of these values:
   the_machine->accumulator
     Which is: 0
   6
-[  FAILED  ] instruction_construction.multiplication_works_in_firth (0 ms)
+[  FAILED  ] instruction_construction.multiplication_works_in_firth (1 ms)
 [ RUN      ] instruction_construction.max_works_in_firth
 /home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/aden_hartman/lmsm/test/firth.cpp:31: Failure
 Expected equality of these values:
