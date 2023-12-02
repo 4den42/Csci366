@@ -3,17 +3,214 @@ Running main() from /home/parallels/autograder/csci-366-fall2023/grading/scripts
 [----------] Global test environment set-up.
 [----------] 6 tests from instruction_construction
 [ RUN      ] instruction_construction.multiplication_works_in_firth
-/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/aden_hartman/lmsm/test/firth.cpp:19: Failure
+labelValue: 2/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/aden_hartman/lmsm/test/firth.cpp:19: Failure
 Expected equality of these values:
   the_machine->accumulator
-    Which is: 0
+    Which is: 2
   6
 [  FAILED  ] instruction_construction.multiplication_works_in_firth (0 ms)
 [ RUN      ] instruction_construction.max_works_in_firth
-/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/aden_hartman/lmsm/test/firth.cpp:31: Failure
-Expected equality of these values:
-  the_machine->accumulator
-    Which is: 0
-  3
-[  FAILED  ] instruction_construction.max_works_in_firth (0 ms)
+labelValue: 3[       OK ] instruction_construction.max_works_in_firth (0 ms)
 [ RUN      ] instruction_construction.make_instruction_basic_instruction_fields_are_set
+[       OK ] instruction_construction.make_instruction_basic_instruction_fields_are_set (0 ms)
+[ RUN      ] instruction_construction.make_instruction_spushi_takes_two_slots
+[       OK ] instruction_construction.make_instruction_spushi_takes_two_slots (0 ms)
+[ RUN      ] instruction_construction.make_instruction_call_takes_three_slots
+[       OK ] instruction_construction.make_instruction_call_takes_three_slots (0 ms)
+[ RUN      ] instruction_construction.make_instruction_properly_offsets_based_on_preceding_instruction
+[       OK ] instruction_construction.make_instruction_properly_offsets_based_on_preceding_instruction (0 ms)
+[----------] 6 tests from instruction_construction (0 ms total)
+
+[----------] 10 tests from parsing_tests
+[ RUN      ] parsing_tests.simple_instruction_parsing_works
+[       OK ] parsing_tests.simple_instruction_parsing_works (0 ms)
+[ RUN      ] parsing_tests.two_instruction_parsing_works_w_space
+[       OK ] parsing_tests.two_instruction_parsing_works_w_space (0 ms)
+[ RUN      ] parsing_tests.two_instruction_parsing_works_w_newline
+[       OK ] parsing_tests.two_instruction_parsing_works_w_newline (0 ms)
+[ RUN      ] parsing_tests.label_is_parsed_correctly
+[       OK ] parsing_tests.label_is_parsed_correctly (0 ms)
+[ RUN      ] parsing_tests.numeric_reference_works_for_branch
+[       OK ] parsing_tests.numeric_reference_works_for_branch (0 ms)
+[ RUN      ] parsing_tests.label_reference_works_for_branch
+[       OK ] parsing_tests.label_reference_works_for_branch (0 ms)
+[ RUN      ] parsing_tests.unknown_instruction_is_handled
+[       OK ] parsing_tests.unknown_instruction_is_handled (0 ms)
+[ RUN      ] parsing_tests.no_argument_for_instruction_causes_error
+[       OK ] parsing_tests.no_argument_for_instruction_causes_error (0 ms)
+[ RUN      ] parsing_tests.numbers_out_of_machine_range_cause_error
+[       OK ] parsing_tests.numbers_out_of_machine_range_cause_error (0 ms)
+[ RUN      ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly
+[       OK ] parsing_tests.negative_numbers_out_of_machine_range_are_capped_properly (0 ms)
+[----------] 10 tests from parsing_tests (0 ms total)
+
+[----------] 30 tests from code_generation
+[ RUN      ] code_generation.add_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.add_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.sub_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.sub_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.store_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.store_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.load_immediate_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.load_immediate_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.load_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.load_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.branch_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.branch_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.branch_if_zero_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.branch_if_zero_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.branch_if_positive_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.branch_if_positive_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.input_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.input_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.out_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.out_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.halt_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.halt_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.cob_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.cob_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.dat_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.dat_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.spush_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.spush_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.spop_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.spop_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.sdup_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.sdup_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.sdrop_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.sdrop_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.sswap_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.sswap_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.sadd_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.sadd_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.ssub_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.ssub_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.smax_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.smax_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.smin_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.smin_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.smul_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.smul_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.sdiv_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.sdiv_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.spushi_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.spushi_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.call_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.call_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.ret_instruction_generates_properly
+labelValue: 1[       OK ] code_generation.ret_instruction_generates_properly (0 ms)
+[ RUN      ] code_generation.instructions_next_to_one_another_generate_in_order_properly
+labelValue: 1labelValue: 1labelValue: 1[       OK ] code_generation.instructions_next_to_one_another_generate_in_order_properly (0 ms)
+[ RUN      ] code_generation.labels_resolve_at_code_generation_time
+labelValue: 0labelValue: 1/home/parallels/autograder/csci-366-fall2023/grading/scripts/repos/aden_hartman/lmsm/test/assembler.cpp:508: Failure
+Expected equality of these values:
+  result->code[0]
+    Which is: 1
+  501
+[  FAILED  ] code_generation.labels_resolve_at_code_generation_time (0 ms)
+[ RUN      ] code_generation.bad_label_causes_error
+labelValue: 1[       OK ] code_generation.bad_label_causes_error (0 ms)
+[----------] 30 tests from code_generation (0 ms total)
+
+[----------] 1 test from end_to_end
+[ RUN      ] end_to_end.bootstrap
+labelValue: 0labelValue: 0[       OK ] end_to_end.bootstrap (0 ms)
+[----------] 1 test from end_to_end (0 ms total)
+
+[----------] 43 tests from lmsm_machine_suite
+[ RUN      ] lmsm_machine_suite.test_add_instruction_works
+[       OK ] lmsm_machine_suite.test_add_instruction_works (0 ms)
+[ RUN      ] lmsm_machine_suite.test_add_instruction_properly_caps_values
+[       OK ] lmsm_machine_suite.test_add_instruction_properly_caps_values (0 ms)
+[ RUN      ] lmsm_machine_suite.test_sub_instruction_works
+[       OK ] lmsm_machine_suite.test_sub_instruction_works (0 ms)
+[ RUN      ] lmsm_machine_suite.test_sub_instruction_properly_caps_values
+[       OK ] lmsm_machine_suite.test_sub_instruction_properly_caps_values (0 ms)
+[ RUN      ] lmsm_machine_suite.test_store_instruction_works
+[       OK ] lmsm_machine_suite.test_store_instruction_works (0 ms)
+[ RUN      ] lmsm_machine_suite.test_load_instruction_works
+[       OK ] lmsm_machine_suite.test_load_instruction_works (0 ms)
+[ RUN      ] lmsm_machine_suite.test_branch_instruction_works
+[       OK ] lmsm_machine_suite.test_branch_instruction_works (0 ms)
+[ RUN      ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_zero
+[       OK ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_zero (0 ms)
+[ RUN      ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_not_zero
+[       OK ] lmsm_machine_suite.test_branch_if_zero_instruction_works_when_val_not_zero (0 ms)
+[ RUN      ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_zero
+[       OK ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_zero (0 ms)
+[ RUN      ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_positive
+[       OK ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_positive (0 ms)
+[ RUN      ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_not_positive
+[       OK ] lmsm_machine_suite.test_branch_if_positive_instruction_works_when_val_not_positive (0 ms)
+[ RUN      ] lmsm_machine_suite.test_output_instruction
+[       OK ] lmsm_machine_suite.test_output_instruction (0 ms)
+[ RUN      ] lmsm_machine_suite.test_halt_instruction
+[       OK ] lmsm_machine_suite.test_halt_instruction (0 ms)
+[ RUN      ] lmsm_machine_suite.test_load_immediate_instruction
+[       OK ] lmsm_machine_suite.test_load_immediate_instruction (0 ms)
+[ RUN      ] lmsm_machine_suite.test_push_instruction
+[       OK ] lmsm_machine_suite.test_push_instruction (0 ms)
+[ RUN      ] lmsm_machine_suite.test_pop_instruction_removes_top_of_stack
+[       OK ] lmsm_machine_suite.test_pop_instruction_removes_top_of_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_pop_instruction_enters_error_state_if_nothing_to_pop
+[       OK ] lmsm_machine_suite.test_pop_instruction_enters_error_state_if_nothing_to_pop (0 ms)
+[ RUN      ] lmsm_machine_suite.test_dup_instruction_duplicates_top_of_stack
+[       OK ] lmsm_machine_suite.test_dup_instruction_duplicates_top_of_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_drop_instruction_removes_top_of_stack
+[       OK ] lmsm_machine_suite.test_drop_instruction_removes_top_of_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_drop_instruction_enters_error_state_if_nothing_to_pop
+[       OK ] lmsm_machine_suite.test_drop_instruction_enters_error_state_if_nothing_to_pop (0 ms)
+[ RUN      ] lmsm_machine_suite.test_swap_instruction_swaps_top_of_stack
+[       OK ] lmsm_machine_suite.test_swap_instruction_swaps_top_of_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_swap_instruction_enters_error_state_if_nothing_to_swap
+[       OK ] lmsm_machine_suite.test_swap_instruction_enters_error_state_if_nothing_to_swap (0 ms)
+[ RUN      ] lmsm_machine_suite.test_sadd_instruction_adds_the_values_on_the_stack
+[       OK ] lmsm_machine_suite.test_sadd_instruction_adds_the_values_on_the_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_sadd_instruction_properly_caps_values
+[       OK ] lmsm_machine_suite.test_sadd_instruction_properly_caps_values (0 ms)
+[ RUN      ] lmsm_machine_suite.test_sadd_instruction_enters_error_state_if_not_enough_elts
+[       OK ] lmsm_machine_suite.test_sadd_instruction_enters_error_state_if_not_enough_elts (0 ms)
+[ RUN      ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack
+[       OK ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_ssub_instruction_properly_caps_values
+[       OK ] lmsm_machine_suite.test_ssub_instruction_properly_caps_values (0 ms)
+[ RUN      ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack_in_the_right_order
+[       OK ] lmsm_machine_suite.test_ssub_instruction_subtracts_the_values_on_the_stack_in_the_right_order (0 ms)
+[ RUN      ] lmsm_machine_suite.test_ssub_instruction_enters_error_state_if_not_enough_elts
+[       OK ] lmsm_machine_suite.test_ssub_instruction_enters_error_state_if_not_enough_elts (0 ms)
+[ RUN      ] lmsm_machine_suite.test_smax_instruction_sets_max_val_on_stack
+[       OK ] lmsm_machine_suite.test_smax_instruction_sets_max_val_on_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_smax_instruction_enters_error_state_if_not_enough_elts
+[       OK ] lmsm_machine_suite.test_smax_instruction_enters_error_state_if_not_enough_elts (0 ms)
+[ RUN      ] lmsm_machine_suite.test_smin_instruction_sets_min_val_on_stack
+[       OK ] lmsm_machine_suite.test_smin_instruction_sets_min_val_on_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_smin_instruction_enters_error_state_if_not_enough_elts
+[       OK ] lmsm_machine_suite.test_smin_instruction_enters_error_state_if_not_enough_elts (0 ms)
+[ RUN      ] lmsm_machine_suite.test_smul_instruction_multiplies_the_values_on_the_stack
+[       OK ] lmsm_machine_suite.test_smul_instruction_multiplies_the_values_on_the_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_smul_instruction_properly_caps_values
+[       OK ] lmsm_machine_suite.test_smul_instruction_properly_caps_values (0 ms)
+[ RUN      ] lmsm_machine_suite.test_smul_instruction_enters_error_state_if_not_enough_elts
+[       OK ] lmsm_machine_suite.test_smul_instruction_enters_error_state_if_not_enough_elts (0 ms)
+[ RUN      ] lmsm_machine_suite.test_sdiv_instruction_divides_the_values_on_the_stack
+[       OK ] lmsm_machine_suite.test_sdiv_instruction_divides_the_values_on_the_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.test_sdiv_instruction_enters_error_state_if_not_enough_elts
+[       OK ] lmsm_machine_suite.test_sdiv_instruction_enters_error_state_if_not_enough_elts (0 ms)
+[ RUN      ] lmsm_machine_suite.test_call_instruction_jumps_to_correct_location_and_consumes_top_of_stack
+[       OK ] lmsm_machine_suite.test_call_instruction_jumps_to_correct_location_and_consumes_top_of_stack (0 ms)
+[ RUN      ] lmsm_machine_suite.return_set_program_counter_to_return_address_and_restores_return_address
+[       OK ] lmsm_machine_suite.return_set_program_counter_to_return_address_and_restores_return_address (0 ms)
+[ RUN      ] lmsm_machine_suite.step_steps_to_the_next_instruction_and_executes_current
+[       OK ] lmsm_machine_suite.step_steps_to_the_next_instruction_and_executes_current (0 ms)
+[ RUN      ] lmsm_machine_suite.step_does_not_step_to_the_next_instruction_and_execute_if_machine_is_halted
+[       OK ] lmsm_machine_suite.step_does_not_step_to_the_next_instruction_and_execute_if_machine_is_halted (0 ms)
+[----------] 43 tests from lmsm_machine_suite (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 90 tests from 5 test suites ran. (1 ms total)
+[  PASSED  ] 88 tests.
+[  FAILED  ] 2 tests, listed below:
+[  FAILED  ] instruction_construction.multiplication_works_in_firth
+[  FAILED  ] code_generation.labels_resolve_at_code_generation_time
+
+ 2 FAILED TESTS
