@@ -1,0 +1,9 @@
+[ 20%] Built target lmsm_lib
+[ 41%] Built target lmsm
+[ 48%] Built target gtest
+[ 55%] Built target gtest_main
+[ 65%] Built target lmsm_assembler_tests
+[ 79%] Built target lmsm_tests
+[ 86%] Built target lmsm_emulator_tests
+[ 93%] Built target gmock
+[100%] Built target gmock_main
