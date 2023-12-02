@@ -136,7 +136,10 @@ firth_parse_element *firth_parse_call(firth_tokens *tokens, firth_compilation_re
 firth_parse_element *firth_parse_op(firth_tokens *tokens, firth_compilation_result *result) {
     if (firth_match_token("+", tokens) ||
         firth_match_token("-", tokens) ||
-        // TODO - add *, /, max and min
+        firth_match_token("*",tokens) ||
+        firth_match_token("/",tokens) ||
+        firth_match_token("max",tokens) ||
+        firth_match_token("min",tokens) ||
         firth_match_token("get", tokens) ||
         firth_match_token("dup", tokens) ||
         firth_match_token("pop", tokens) ||
@@ -224,7 +227,14 @@ void firth_code_gen_elt(firth_parse_element * elt, firth_compilation_result *res
             strcat(result->lmsm_assembly, "SADD\n");
         } else if (firth_elt_token_equals(elt, "-")) {
             strcat(result->lmsm_assembly, "SSUB\n");
-            // TODO - add assembly generation for *, /, max and min
+        } else if (firth_elt_token_equals(elt, "*")) {
+            strcat(result->lmsm_assembly, "SMUL\n");  //Added MUL, DIV, MAX, MIN
+        } else if (firth_elt_token_equals(elt, "/")) {
+            strcat(result->lmsm_assembly, "SDIV\n");
+        } else if (firth_elt_token_equals(elt, "max")) {
+            strcat(result->lmsm_assembly, "SMAX\n");
+        } else if (firth_elt_token_equals(elt, "min")) {
+            strcat(result->lmsm_assembly, "SMIN\n");
         } else if (firth_elt_token_equals(elt, "get")) {
             strcat(result->lmsm_assembly, "INP\nSPUSH\n");
         } else if (firth_elt_token_equals(elt, "pop")) {

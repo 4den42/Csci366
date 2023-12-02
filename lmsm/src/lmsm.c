@@ -33,23 +33,16 @@ int lmsm_has_two_values_on_stack(lmsm *our_little_machine) {
 //======================================================
 
 void lmsm_i_jal(lmsm *our_little_machine) {
-    int target_address = our_little_machine->current_instruction;
-
-    if (our_little_machine->stack_pointer < 200) {
-        // Store the return address (current program counter) on the call stack
-        our_little_machine->memory[our_little_machine->stack_pointer] = our_little_machine->program_counter;
-        our_little_machine->stack_pointer++;
-    } else {
-        // Handle call stack overflow (optional)
-        // You may want to generate an error or take other action if the stack is full.
-    }
-
-    // Set the program counter to the target address for the function call
+    int target_address = our_little_machine->memory[our_little_machine->stack_pointer];
+    int prevCount = our_little_machine->program_counter;
     our_little_machine->program_counter = target_address;
-
+    our_little_machine->return_address_pointer++;
+    our_little_machine->memory[our_little_machine->return_address_pointer] = prevCount;
+    our_little_machine->stack_pointer++;
 }
 
 void lmsm_i_ret(lmsm *our_little_machine) {
+        int prevCount = our_little_machine->program_counter;
         our_little_machine->program_counter = our_little_machine->memory[our_little_machine->return_address_pointer];
         our_little_machine->return_address_pointer--;
 
@@ -294,11 +287,13 @@ void lmsm_exec_instruction(lmsm *our_little_machine, int instruction) {
         lmsm_i_branch_if_zero(our_little_machine, instruction - 700);
     } else if (800 <= instruction && instruction <= 899) {
         lmsm_i_branch_if_positive(our_little_machine, instruction - 800);
+    } else if (instruction == 901) {
+        lmsm_i_inp(our_little_machine);
     } else if (instruction == 902) {
         lmsm_i_out(our_little_machine);
     } else if (instruction == 910) {
         lmsm_i_jal(our_little_machine);
-    } else if (instruction == 912) {
+    } else if (instruction == 911) {
         lmsm_i_ret(our_little_machine);
     } else if (instruction == 920) {
         lmsm_i_push(our_little_machine);
