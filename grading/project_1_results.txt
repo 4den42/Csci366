@@ -1,22 +1,9 @@
-Scanning dependencies of target lmsm_lib
-[  3%] Building C object CMakeFiles/lmsm_lib.dir/src/lmsm.c.o
-[  6%] Building C object CMakeFiles/lmsm_lib.dir/src/assembler.c.o
-[ 10%] Building C object CMakeFiles/lmsm_lib.dir/src/firth.c.o
-[ 13%] Linking C static library liblmsm_lib.a
 [ 20%] Built target lmsm_lib
-Scanning dependencies of target lmsm
-[ 24%] Building C object CMakeFiles/lmsm.dir/src/lmsm.c.o
-[ 27%] Building C object CMakeFiles/lmsm.dir/src/assembler.c.o
-[ 31%] Building C object CMakeFiles/lmsm.dir/src/firth.c.o
-[ 34%] Linking C executable lmsm
 [ 41%] Built target lmsm
 [ 48%] Built target gtest
 [ 55%] Built target gtest_main
-[ 58%] Linking CXX executable lmsm_assembler_tests
 [ 65%] Built target lmsm_assembler_tests
-[ 68%] Linking CXX executable lmsm_tests
 [ 79%] Built target lmsm_tests
-[ 82%] Linking CXX executable lmsm_emulator_tests
 [ 86%] Built target lmsm_emulator_tests
 [ 93%] Built target gmock
 [100%] Built target gmock_main

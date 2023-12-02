@@ -110,7 +110,7 @@ Expected equality of these values:
 [  FAILED  ] code_generation.labels_resolve_at_code_generation_time (0 ms)
 [ RUN      ] code_generation.bad_label_causes_error
 labelValue: 1[       OK ] code_generation.bad_label_causes_error (0 ms)
-[----------] 30 tests from code_generation (0 ms total)
+[----------] 30 tests from code_generation (1 ms total)
 
 [----------] 1 test from end_to_end
 [ RUN      ] end_to_end.bootstrap
