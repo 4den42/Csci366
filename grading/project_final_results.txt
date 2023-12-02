@@ -19,7 +19,7 @@ labelValue: 3[       OK ] instruction_construction.max_works_in_firth (0 ms)
 [       OK ] instruction_construction.make_instruction_call_takes_three_slots (0 ms)
 [ RUN      ] instruction_construction.make_instruction_properly_offsets_based_on_preceding_instruction
 [       OK ] instruction_construction.make_instruction_properly_offsets_based_on_preceding_instruction (0 ms)
-[----------] 6 tests from instruction_construction (0 ms total)
+[----------] 6 tests from instruction_construction (1 ms total)
 
 [----------] 10 tests from parsing_tests
 [ RUN      ] parsing_tests.simple_instruction_parsing_works
